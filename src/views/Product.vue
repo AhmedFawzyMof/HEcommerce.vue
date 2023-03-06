@@ -644,9 +644,9 @@ export default {
 }
 
 .Colors {
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(8, auto);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
   width: 100%;
   height: 100%;
   gap: 15px;
@@ -685,9 +685,9 @@ export default {
 }
 
 .Sizes {
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(8, auto);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
   width: 100%;
   height: 100%;
   gap: 15px;
@@ -864,7 +864,8 @@ export default {
 }
 
 .comments {
-  margin: 30px 0;
+  direction: ltr;
+  margin: 20px 0;
   width: 350px;
   height: auto;
   display: grid;
