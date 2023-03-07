@@ -1,7 +1,15 @@
 <template>
-  <div class="cur">
+  <div class="cur RTL" v-if="$store.state.Lang">
     <router-link v-for="p in cur" :key="p.id" :to="p.get_absolute_url">
       <img :src="p.image" />
+<<<<<<< HEAD
+=======
+    </router-link>
+  </div>
+  <div class="cur" v-else>
+    <router-link v-for="p in cur" :key="p.id" :to="p.get_absolute_url">
+      <img :src="p.image" />
+>>>>>>> a65eaf19b672d6c0bbef9ca21f863f3e67bec0fd
     </router-link>
   </div>
   <div class="PContainer">
