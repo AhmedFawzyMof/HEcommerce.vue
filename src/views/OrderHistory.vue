@@ -20,6 +20,11 @@
       </h2>
     </div>
   </div>
+  
+  <button @click="loadMore" class="LoadBtn">
+    Load More
+  </button>
+
 </template>
 
 <script>
@@ -29,11 +34,12 @@ import OrderSummary from "@/components/OrderSummary.vue";
 export default {
   name: "OrderHistory",
   components: {
-    OrderSummary, //
+    OrderSummary, 
   },
   data() {
     return {
       orders: [],
+            length: 20,
     };
   },
   mounted() {
@@ -44,14 +50,23 @@ export default {
     }
 
     this.getMyOrders();
-  },
+  },  
   methods: {
+    loadMore() {
+      if (this.length > this.category.products.length) return;
+      this.length = this.length + 20;
+    },
     async getMyOrders() {
       this.$store.commit("setIsLoading", true);
       await axios.get("/api/v1/orders/").then((response) => {
         this.orders = response.data;
       });
       this.$store.commit("setIsLoading", false);
+    },
+  },  
+  computed: {
+    productsLoaded() {
+      return this.category.products.slice(0, this.length);
     },
   },
 };
@@ -76,6 +91,23 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 20px;
+  }
+}
+.LoadBtn {
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  background: #eeeeee65;
+  box-shadow: 0 0 2px 2px #3333335b;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 50px;
+  border: none;
+  transition: 0.4s;
+  &:hover {
+    background: #3333335b;
+    color: #eee;
   }
 }
 </style>
