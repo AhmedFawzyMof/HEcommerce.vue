@@ -21,9 +21,11 @@
     </div>
   </div>
   
-  <button @click="loadMore" class="LoadBtn">
-    Load More
-  </button>
+  <div class="loaddiv">
+    <button v-if="productsLoaded.length >= 20" @click="loadMore" class="LoadBtn">
+      Load More
+    </button>
+  </div>
 
 </template>
 
@@ -93,6 +95,10 @@ export default {
     gap: 20px;
   }
 }
+.loaddiv {
+  width: 300px
+}
+
 .LoadBtn {
   margin: 20px 0;
   font-size: 20px;
