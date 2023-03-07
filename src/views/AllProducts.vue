@@ -65,11 +65,7 @@
     </form>
   </div>
   <div class="container">
-<<<<<<< HEAD
     <div class="notfound" v-if="products && products.length">
-=======
-<div class="notfound" v-if="products && products.length">
->>>>>>> a65eaf19b672d6c0bbef9ca21f863f3e67bec0fd
       <h1 class="subtitle" v-if="$store.state.Lang">
         غير موجود الرجاء المحاولة مرة أخرى
       </h1>
