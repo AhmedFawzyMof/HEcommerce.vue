@@ -549,11 +549,14 @@ export default {
     },
     //
     addToCart() {
-      if (this.product.sizes && this.product.sizes.length) {
+      if (
+        (this.product.sizes && this.product.sizes.length,
+        this.product.colors && this.product.colors.length)
+      ) {
         if (this.$store.state.Lang) {
-          if (this.sizes === "") {
+          if ((this.colors === "", this.sizes === "")) {
             toast({
-              message: "الرجاء تحديد الحجم",
+              message: "الرجاء تحديد اللون والحجم",
               type: "is-danger",
               dismissible: true,
               pauseOnHover: true,
@@ -567,28 +570,19 @@ export default {
               color: this.colors,
               size: this.sizes,
             };
+
             this.$store.commit("addToCart", item);
           }
         } else {
-          if (this.product.sizes && this.product.sizes.length) {
-            if (this.sizes === "") {
-              toast({
-                message: "please select size",
-                type: "is-danger",
-                dismissible: true,
-                pauseOnHover: true,
-                duration: 2000,
-                position: "bottom-right",
-              });
-            } else {
-              const item = {
-                product: this.product,
-                quantity: this.quantity,
-                color: this.colors,
-                size: this.sizes,
-              };
-              this.$store.commit("addToCart", item);
-            }
+          if ((this.colors === "", this.sizes === "")) {
+            toast({
+              message: "please select color and size",
+              type: "is-danger",
+              dismissible: true,
+              pauseOnHover: true,
+              duration: 2000,
+              position: "bottom-right",
+            });
           } else {
             const item = {
               product: this.product,
@@ -600,33 +594,12 @@ export default {
             this.$store.commit("addToCart", item);
           }
         }
-      }
-      //-------------------------
-      if (this.product.colors && this.product.colors.length) {
-        if (this.$store.state.Lang) {
-          if (this.colors === "") {
-            toast({
-              message: "الرجاء تحديد اللون",
-              type: "is-danger",
-              dismissible: true,
-              pauseOnHover: true,
-              duration: 2000,
-              position: "bottom-right",
-            });
-          } else {
-            const item = {
-              product: this.product,
-              quantity: this.quantity,
-              color: this.colors,
-              size: this.sizes,
-            };
-            this.$store.commit("addToCart", item);
-          }
-        } else {
-          if (this.product.colors && this.product.colors.length) {
-            if (this.colors === "") {
+      } else {
+        if (this.product.sizes && this.product.sizes.length) {
+          if (this.$store.state.Lang) {
+            if (this.sizes === "") {
               toast({
-                message: "please select color",
+                message: "الرجاء تحديد الحجم",
                 type: "is-danger",
                 dismissible: true,
                 pauseOnHover: true,
@@ -643,14 +616,87 @@ export default {
               this.$store.commit("addToCart", item);
             }
           } else {
-            const item = {
-              product: this.product,
-              quantity: this.quantity,
-              color: this.colors,
-              size: this.sizes,
-            };
+            if (this.product.sizes && this.product.sizes.length) {
+              if (this.sizes === "") {
+                toast({
+                  message: "please select size",
+                  type: "is-danger",
+                  dismissible: true,
+                  pauseOnHover: true,
+                  duration: 2000,
+                  position: "bottom-right",
+                });
+              } else {
+                const item = {
+                  product: this.product,
+                  quantity: this.quantity,
+                  color: this.colors,
+                  size: this.sizes,
+                };
+                this.$store.commit("addToCart", item);
+              }
+            } else {
+              const item = {
+                product: this.product,
+                quantity: this.quantity,
+                color: this.colors,
+                size: this.sizes,
+              };
 
-            this.$store.commit("addToCart", item);
+              this.$store.commit("addToCart", item);
+            }
+          }
+        }
+        if (this.product.colors && this.product.colors.length) {
+          if (this.$store.state.Lang) {
+            if (this.colors === "") {
+              toast({
+                message: "الرجاء تحديد اللون",
+                type: "is-danger",
+                dismissible: true,
+                pauseOnHover: true,
+                duration: 2000,
+                position: "bottom-right",
+              });
+            } else {
+              const item = {
+                product: this.product,
+                quantity: this.quantity,
+                color: this.colors,
+                size: this.sizes,
+              };
+              this.$store.commit("addToCart", item);
+            }
+          } else {
+            if (this.product.colors && this.product.colors.length) {
+              if (this.colors === "") {
+                toast({
+                  message: "please select color",
+                  type: "is-danger",
+                  dismissible: true,
+                  pauseOnHover: true,
+                  duration: 2000,
+                  position: "bottom-right",
+                });
+              } else {
+                const item = {
+                  product: this.product,
+                  quantity: this.quantity,
+                  color: this.colors,
+                  size: this.sizes,
+                };
+                this.$store.commit("addToCart", item);
+              }
+            } else {
+              const item = {
+                product: this.product,
+                quantity: this.quantity,
+                color: this.colors,
+                size: this.sizes,
+              };
+
+              this.$store.commit("addToCart", item);
+            }
           }
         }
       }
