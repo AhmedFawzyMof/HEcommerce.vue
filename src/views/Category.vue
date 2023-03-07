@@ -79,11 +79,13 @@ export default {
   flex-wrap: wrap;
 }
 .loaddiv {
-  width: 300px
+  width: 300px;
+  
+  margin: 20px 0;
 }
 
+
 .LoadBtn {
-  margin: 20px 0;
   font-size: 20px;
   font-weight: 700;
   color: #333;
