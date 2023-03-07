@@ -551,11 +551,12 @@ export default {
     addToCart() {
       if (
         this.product.sizes &&
-        this.product.sizes.length && this.product.colors &&
+        this.product.sizes.length &&
+        this.product.colors &&
         this.product.colors.length
       ) {
         if (this.$store.state.Lang) {
-          if ((this.colors === "", this.sizes === "")) {
+          if (this.colors === "" && this.sizes === "") {
             toast({
               message: "الرجاء تحديد اللون والحجم",
               type: "is-danger",
@@ -575,7 +576,7 @@ export default {
             this.$store.commit("addToCart", item);
           }
         } else {
-          if ((this.colors === "", this.sizes === "")) {
+          if (this.colors === "" && this.sizes === "") {
             toast({
               message: "please select color and size",
               type: "is-danger",
