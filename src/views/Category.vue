@@ -6,9 +6,11 @@
       v-bind:product="product"
     />
   </div>
-  <button v-if="productsLoaded.length >= 20" @click="loadMore" class="LoadBtn">
-    Load More
-  </button>
+  <div class="loaddiv">
+    <button v-if="productsLoaded.length >= 20" @click="loadMore" class="LoadBtn">
+      Load More
+    </button>
+  </div>
 </template>
 <script>
 import axios from "axios";
@@ -75,6 +77,9 @@ export default {
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
+}
+.loaddiv {
+  width: 300px
 }
 
 .LoadBtn {
