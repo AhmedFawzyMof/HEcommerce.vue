@@ -2,7 +2,7 @@
   <div class="CONTAINER RTL" v-if="$store.state.Lang">
     <div class="ProductPage">
       <div class="PI">
-        <img :src="product.get_image" />
+        <img :src="product.image" />
       </div>
       <div class="PInfo">
         <div class="PQ">
@@ -19,47 +19,98 @@
               </router-link>
             </div>
           </div>
-          <div id="sizes" v-if="product.sizes && product.sizes.length">
-            <div class="Sizes">
-              <div class="size" v-for="size in product.sizes">
-                <input
-                  type="radio"
-                  :value="size"
-                  v-model="sizes"
-                  name="sizes"
-                  :id="size"
-                />
-                <label :for="size">{{ size }}</label>
-                <div class="border"></div>
+          <div
+            v-if="
+              (product.sizes && product.sizes.length,
+              product.colors && product.colors.length)
+            "
+          >
+            <div id="sizes" v-if="product.sizes && product.sizes.length">
+              <div class="Sizes">
+                <div class="size" v-for="size in product.sizes">
+                  <input
+                    type="radio"
+                    :value="size"
+                    v-model="sizes"
+                    name="sizes"
+                    :id="size"
+                  />
+                  <label :for="size">{{ size }}</label>
+                  <div class="border"></div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="div" v-else></div>
-          <div id="colors" v-if="product.colors && product.colors.length">
-            <div class="Colors">
-              <div class="color" v-for="color in product.colors">
-                <input
-                  v-model="colors"
-                  :value="color"
-                  type="radio"
-                  name="colors"
-                  :id="color"
-                />
-                <label
-                  :for="color"
-                  :style="{ backgroundColor: color, color: color }"
-                  >{{ color.substring(1, []) }}</label
-                >
+            <div class="div" v-else></div>
+            <div id="colors" v-if="product.colors && product.colors.length">
+              <div class="Colors">
+                <div class="color" v-for="color in product.colors">
+                  <input
+                    v-model="colors"
+                    :value="color"
+                    type="radio"
+                    name="colors"
+                    :id="color"
+                  />
+                  <label
+                    :for="color"
+                    :style="{ backgroundColor: color, color: color }"
+                    >{{ color.substring(1, []) }}</label
+                  >
+                </div>
               </div>
             </div>
-          </div>
-          <div class="div" v-else></div>
-          <div class="Quantity">
-            <p><strong>السعر : </strong> {{ product.price }} ج.م</p>
+            <div class="div" v-else></div>
+            <div class="Quantity">
+              <p><strong>السعر : </strong> {{ product.price }} ج.م</p>
 
-            <button @click="addToCart">
-              أضف إلى السلة<i class="bx bxs-cart-add"></i>
-            </button>
+              <button @click="addToCart2">
+                أضف إلى السلة<i class="bx bxs-cart-add"></i>
+              </button>
+            </div>
+          </div>
+          <div v-else>
+            <div id="sizes" v-if="product.sizes && product.sizes.length">
+              <div class="Sizes">
+                <div class="size" v-for="size in product.sizes">
+                  <input
+                    type="radio"
+                    :value="size"
+                    v-model="sizes"
+                    name="sizes"
+                    :id="size"
+                  />
+                  <label :for="size">{{ size }}</label>
+                  <div class="border"></div>
+                </div>
+              </div>
+            </div>
+            <div class="div" v-else></div>
+            <div id="colors" v-if="product.colors && product.colors.length">
+              <div class="Colors">
+                <div class="color" v-for="color in product.colors">
+                  <input
+                    v-model="colors"
+                    :value="color"
+                    type="radio"
+                    name="colors"
+                    :id="color"
+                  />
+                  <label
+                    :for="color"
+                    :style="{ backgroundColor: color, color: color }"
+                    >{{ color.substring(1, []) }}</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="div" v-else></div>
+            <div class="Quantity">
+              <p><strong>السعر : </strong> {{ product.price }} ج.م</p>
+
+              <button @click="addToCart">
+                أضف إلى السلة<i class="bx bxs-cart-add"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -221,7 +272,7 @@
   <div class="CONTAINER" v-else>
     <div class="ProductPage">
       <div class="PI">
-        <img :src="product.get_image" />
+        <img :src="product.image" />
       </div>
       <div class="PInfo">
         <div class="PQ">
@@ -238,46 +289,98 @@
               </router-link>
             </div>
           </div>
-          <div id="sizes" v-if="product.sizes && product.sizes.length">
-            <div class="Sizes">
-              <div class="size" v-for="size in product.sizes">
-                <input
-                  type="radio"
-                  :value="size"
-                  v-model="sizes"
-                  name="sizes"
-                  :id="size"
-                />
-                <label :for="size">{{ size }}</label>
-                <div class="border"></div>
+          <div
+            v-if="
+              (product.sizes && product.sizes.length,
+              product.colors && product.colors.length)
+            "
+          >
+            <div id="sizes" v-if="product.sizes && product.sizes.length">
+              <div class="Sizes">
+                <div class="size" v-for="size in product.sizes">
+                  <input
+                    type="radio"
+                    :value="size"
+                    v-model="sizes"
+                    name="sizes"
+                    :id="size"
+                  />
+                  <label :for="size">{{ size }}</label>
+                  <div class="border"></div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="div" v-else></div>
-          <div id="colors" v-if="product.colors && product.colors.length">
-            <div class="Colors">
-              <div class="color" v-for="color in product.colors">
-                <input
-                  v-model="colors"
-                  :value="color"
-                  type="radio"
-                  name="colors"
-                  :id="color"
-                />
-                <label
-                  :for="color"
-                  :style="{ backgroundColor: color, color: color }"
-                  >{{ color.substring(1, []) }}</label
-                >
+            <div class="div" v-else></div>
+            <div id="colors" v-if="product.colors && product.colors.length">
+              <div class="Colors">
+                <div class="color" v-for="color in product.colors">
+                  <input
+                    v-model="colors"
+                    :value="color"
+                    type="radio"
+                    name="colors"
+                    :id="color"
+                  />
+                  <label
+                    :for="color"
+                    :style="{ backgroundColor: color, color: color }"
+                    >{{ color.substring(1, []) }}</label
+                  >
+                </div>
               </div>
             </div>
+            <div class="div" v-else></div>
+
+            <div class="Quantity">
+              <p><strong>Price: </strong> {{ product.price }} EGP</p>
+              <button @click="addToCart2">
+                Add To Cart <i class="bx bxs-cart-add"></i>
+              </button>
+            </div>
           </div>
-          <div class="div" v-else></div>
-          <div class="Quantity">
-            <p><strong>Price: </strong> {{ product.price }} EGP</p>
-            <button @click="addToCart">
-              Add To Cart <i class="bx bxs-cart-add"></i>
-            </button>
+          <div v-else>
+            <div id="sizes" v-if="product.sizes && product.sizes.length">
+              <div class="Sizes">
+                <div class="size" v-for="size in product.sizes">
+                  <input
+                    type="radio"
+                    :value="size"
+                    v-model="sizes"
+                    name="sizes"
+                    :id="size"
+                  />
+                  <label :for="size">{{ size }}</label>
+                  <div class="border"></div>
+                </div>
+              </div>
+            </div>
+            <div class="div" v-else></div>
+            <div id="colors" v-if="product.colors && product.colors.length">
+              <div class="Colors">
+                <div class="color" v-for="color in product.colors">
+                  <input
+                    v-model="colors"
+                    :value="color"
+                    type="radio"
+                    name="colors"
+                    :id="color"
+                  />
+                  <label
+                    :for="color"
+                    :style="{ backgroundColor: color, color: color }"
+                    >{{ color.substring(1, []) }}</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="div" v-else></div>
+
+            <div class="Quantity">
+              <p><strong>Price: </strong> {{ product.price }} EGP</p>
+              <button @click="addToCart">
+                Add To Cart <i class="bx bxs-cart-add"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -549,6 +652,131 @@ export default {
     //
     addToCart() {
       if (this.$store.state.Lang) {
+        if (this.product.sizes && this.product.sizes.length) {
+          if (this.sizes === "") {
+            toast({
+              message: "الرجاء تحديد الحجم",
+              type: "is-danger",
+              dismissible: true,
+              pauseOnHover: true,
+              duration: 2000,
+              position: "bottom-right",
+            });
+          } else {
+            const item = {
+              product: this.product,
+              quantity: this.quantity,
+              color: this.colors,
+              size: this.sizes,
+            };
+            this.$store.commit("addToCart", item);
+          }
+        } else {
+          const item = {
+            product: this.product,
+            quantity: this.quantity,
+            color: this.colors,
+            size: this.sizes,
+          };
+
+          this.$store.commit("addToCart", item);
+        }
+      } else {
+        if (this.product.sizes && this.product.sizes.length) {
+          if (this.sizes === "") {
+            toast({
+              message: "please select size",
+              type: "is-danger",
+              dismissible: true,
+              pauseOnHover: true,
+              duration: 2000,
+              position: "bottom-right",
+            });
+          } else {
+            const item = {
+              product: this.product,
+              quantity: this.quantity,
+              color: this.colors,
+              size: this.sizes,
+            };
+            this.$store.commit("addToCart", item);
+          }
+        } else {
+          const item = {
+            product: this.product,
+            quantity: this.quantity,
+            color: this.colors,
+            size: this.sizes,
+          };
+
+          this.$store.commit("addToCart", item);
+        }
+      }
+      //-------------------------
+      if (this.$store.state.Lang) {
+        if (this.product.colors && this.product.colors.length) {
+          if (this.colors === "") {
+            toast({
+              message: "الرجاء تحديد اللون",
+              type: "is-danger",
+              dismissible: true,
+              pauseOnHover: true,
+              duration: 2000,
+              position: "bottom-right",
+            });
+          } else {
+            const item = {
+              product: this.product,
+              quantity: this.quantity,
+              color: this.colors,
+              size: this.sizes,
+            };
+            this.$store.commit("addToCart", item);
+          }
+        } else {
+          const item = {
+            product: this.product,
+            quantity: this.quantity,
+            color: this.colors,
+            size: this.sizes,
+          };
+
+          this.$store.commit("addToCart", item);
+        }
+      } else {
+        if (this.product.sizes && this.product.sizes.length) {
+          if (this.sizes === "") {
+            toast({
+              message: "please select color ",
+              type: "is-danger",
+              dismissible: true,
+              pauseOnHover: true,
+              duration: 2000,
+              position: "bottom-right",
+            });
+          } else {
+            const item = {
+              product: this.product,
+              quantity: this.quantity,
+              color: this.colors,
+              size: this.sizes,
+            };
+            this.$store.commit("addToCart", item);
+          }
+        } else {
+          const item = {
+            product: this.product,
+            quantity: this.quantity,
+            color: this.colors,
+            size: this.sizes,
+          };
+
+          this.$store.commit("addToCart", item);
+        }
+      }
+    },
+    addToCart2() {
+      if (this.$store.state.Lang) {
         if (
           (this.product.sizes && this.product.sizes.length,
           this.product.colors && this.product.colors.length)
@@ -618,7 +846,6 @@ export default {
         }
       }
     },
-
     setIsLoading(state, status) {
       state.isLoading = status;
     },
