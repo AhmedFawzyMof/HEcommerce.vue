@@ -550,8 +550,9 @@ export default {
     //
     addToCart() {
       if (
-        (this.product.sizes && this.product.sizes.length,
-        this.product.colors && this.product.colors.length)
+        this.product.sizes &&
+        this.product.sizes.length + this.product.colors &&
+        this.product.colors.length
       ) {
         if (this.$store.state.Lang) {
           if ((this.colors === "", this.sizes === "")) {
