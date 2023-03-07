@@ -22,7 +22,7 @@
   </div>
   
   <div class="loaddiv">
-    <button v-if="productsLoaded.length >= 20" @click="loadMore" class="LoadBtn">
+    <button v-if="OrdersLoaded.length >= 20" @click="loadMore" class="LoadBtn">
       Load More
     </button>
   </div>
@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       orders: [],
-            length: 20,
+      length: 20,
     };
   },
   mounted() {
@@ -55,7 +55,7 @@ export default {
   },  
   methods: {
     loadMore() {
-      if (this.length > this.category.products.length) return;
+      if (this.length > this.orders.length) return;
       this.length = this.length + 20;
     },
     async getMyOrders() {
@@ -67,8 +67,8 @@ export default {
     },
   },  
   computed: {
-    productsLoaded() {
-      return this.category.products.slice(0, this.length);
+    OrdersLoaded() {
+      return this.orders.slice(0, this.length);
     },
   },
 };
