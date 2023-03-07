@@ -20,9 +20,14 @@
       </h2>
     </div>
   </div>
-  <div class="loaddiv">
+  <div class="loaddiv" v-if="$store.state.Lang">
     <button v-if="ordersLoaded.length >= 20" @click="loadMore" class="LoadBtn">
       Load More
+    </button>
+  </div>
+  <div class="loaddiv" v-else>
+    <button v-if="ordersLoaded.length >= 20" @click="loadMore" class="LoadBtn">
+      تحميل المزيد
     </button>
   </div>
 </template>

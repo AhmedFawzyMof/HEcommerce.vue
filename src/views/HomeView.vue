@@ -4,6 +4,11 @@
       <img :src="p.image" />
     </router-link>
   </div>
+  <div class="cur" v-else>
+    <router-link v-for="p in cur" :key="p.id" :to="p.get_absolute_url">
+      <img :src="p.image" />
+    </router-link>
+  </div>
   <div class="PContainer">
     <ProductCard
       v-for="product in latestProducts"
