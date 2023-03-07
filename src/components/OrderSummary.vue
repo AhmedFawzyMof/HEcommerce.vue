@@ -62,8 +62,14 @@
         <p>{{ item.product.price }} ج.م</p>
         <p>{{ item.quantity }}</p>
         <p>{{ getItemTotal(item) }} ج.م</p>
-        <p class="color" :style="{ backgroundColor: item.color }"></p>
-        <p>{{ item.size }}</p>
+        <p
+          v-if="product.colors && product.colors.length"
+          class="color"
+          :style="{ backgroundColor: item.color }"
+        ></p>
+        <p v-else></p>
+        <p v-if="product.sizes && product.sizes.length">{{ item.size }}</p>
+        <p v-else></p>
       </div>
     </div>
     <div class="OTB" v-else>
@@ -76,8 +82,14 @@
         <p>{{ item.product.price }} EGP</p>
         <p>{{ item.quantity }}</p>
         <p>{{ getItemTotal(item) }} EGP</p>
-        <p class="color" :style="{ backgroundColor: item.color }"></p>
-        <p>{{ item.size }}</p>
+        <p
+          v-if="product.colors && product.colors.length"
+          class="color"
+          :style="{ backgroundColor: item.color }"
+        ></p>
+        <p v-else></p>
+        <p v-if="product.sizes && product.sizes.length">{{ item.size }}</p>
+        <p v-else></p>
       </div>
     </div>
   </div>
