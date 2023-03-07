@@ -6,7 +6,7 @@
 
     <div class="oCont" v-if="orders.length">
       <OrderSummary
-        v-for="order in orders"
+        v-for="order in ordersLoaded"
         v-bind:key="order.id"
         v-bind:order="order"
       />
@@ -19,6 +19,11 @@
         There is no Orders go <router-link to="/">shopping...</router-link>
       </h2>
     </div>
+  </div>
+  <div class="loaddiv">
+    <button v-if="ordersLoaded.length >= 20" @click="loadMore" class="LoadBtn">
+      Load More
+    </button>
   </div>
 </template>
 
@@ -34,6 +39,7 @@ export default {
   data() {
     return {
       orders: [],
+      length: 20,
     };
   },
   mounted() {
@@ -46,12 +52,21 @@ export default {
     this.getMyOrders();
   },
   methods: {
+    loadMore() {
+      if (this.length > this.orders.length) return;
+      this.length = this.length + 20;
+    },
     async getMyOrders() {
       this.$store.commit("setIsLoading", true);
       await axios.get("/api/v1/orders/").then((response) => {
         this.orders = response.data;
       });
       this.$store.commit("setIsLoading", false);
+    },
+  },
+  computed: {
+    ordersLoaded() {
+      return this.orders.slice(0, this.length);
     },
   },
 };
@@ -76,6 +91,29 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 20px;
+  }
+}
+.loaddiv {
+  width: 300px;
+}
+
+.LoadBtn {
+  width: 100%;
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  background: #eeeeee65;
+  box-shadow: 0 0 2px 2px #3333335b;
+  padding: 7.5px 10px;
+  cursor: pointer;
+  border-radius: 50px;
+  border: none;
+  transition: 0.4s;
+
+  &:hover {
+    background: #3333335b;
+    color: #eee;
   }
 }
 </style>

@@ -65,18 +65,18 @@
     </form>
   </div>
   <div class="container">
-    <div class="PContainer" v-if="products && products.length">
+    <div class="notfound" v-if="products && products.length">
+      <h1 class="subtitle" v-if="$store.state.Lang">
+        غير موجود الرجاء المحاولة مرة أخرى
+      </h1>
+      <h1 class="subtitle" v-else>not found please try again</h1>
+    </div>
+    <div class="PContainer" v-else>
       <ProductCard
         v-for="product in allproducts"
         v-bind:key="product.id"
         v-bind:product="product"
       />
-    </div>
-    <div class="notfound" v-else>
-      <h1 class="subtitle" v-if="$store.state.Lang">
-        غير موجود الرجاء المحاولة مرة أخرى
-      </h1>
-      <h1 class="subtitle" v-else>not found please try again</h1>
     </div>
   </div>
   <div class="pagingaiton">
@@ -132,7 +132,7 @@ export default {
   methods: {
     async getAllCategoris() {
       this.$store.commit("setIsLoading", true);
-      await axios.get("/api/v1/allcategoris").then((response) => {
+      await axios.get("/api/v1/allcategoris/").then((response) => {
         this.categoris = response.data;
       });
       this.$store.commit("setIsLoading", false);

@@ -2,7 +2,7 @@
   <div class="PCard">
     <div class="Pimg">
       <router-link v-bind:to="product.get_absolute_url">
-        <img :src="product.get_image" />
+        <img :src="product.image" />
       </router-link>
     </div>
     <!--v-if="$store.state.lang"-->

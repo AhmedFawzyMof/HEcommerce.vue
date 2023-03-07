@@ -1,6 +1,6 @@
 <template>
   <div class="CartItem RTL" v-if="$store.state.Lang">
-    <img :src="item.product.get_image" />
+    <img :src="item.product.image" />
     {{ item.product.price }} ج.م
     <p
       class="p"
@@ -27,7 +27,7 @@
     <button class="delete" @click="removeFromCart(item)"></button>
   </div>
   <div class="CartItem" v-else>
-    <img :src="item.product.get_image" />
+    <img :src="item.product.image" />
     {{ item.product.price }} EGP
     <p
       class="p"

@@ -1,7 +1,7 @@
 <template>
   <div class="cur">
     <router-link v-for="p in cur" :key="p.id" :to="p.get_absolute_url">
-      <img :src="p.get_image" />
+      <img :src="p.image" />
     </router-link>
   </div>
   <div class="PContainer">
